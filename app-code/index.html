@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduEvents — University Event Registration Portal</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;1,300&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="40" rx="10" fill="#0a1628"/>
+          <path d="M20 9L8 15.5L20 22L32 15.5L20 9Z" fill="#c9a84c"/>
+          <path d="M14 18.5V25C14 25 16 28 20 28C24 28 26 25 26 25V18.5L20 22L14 18.5Z" fill="#ffffff" opacity="0.92"/>
+          <rect x="30" y="15" width="2.5" height="9" rx="1.25" fill="#c9a84c"/>
+          <circle cx="31.25" cy="25" r="2" fill="#c9a84c"/>
+        </svg>
+        <span class="logo-text">Edu<em>Events</em></span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#home"     class="nav-link active">Home</a></li>
+        <li><a href="#about"    class="nav-link">About</a></li>
+        <li><a href="#speakers" class="nav-link">Speakers</a></li>
+        <li><a href="#schedule" class="nav-link">Schedule</a></li>
+        <li><a href="#venue"    class="nav-link">Venue</a></li>
+        <li><a href="#contact"  class="nav-link">Contact</a></li>
+        <li>
+          <button class="nav-cta" onclick="openModal('General Registration','Student Event Registration','See schedule below','')">
+            <i class="fas fa-pen-to-square"></i> Register Now
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══ HOME ═══ -->
+  <section id="home" class="section hero-section">
+    <div class="hero-bg-pattern" aria-hidden="true">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="ap" x="0" y="0" width="160" height="160" patternUnits="userSpaceOnUse">
+            <g opacity="0.06" transform="translate(10,10)">
+              <rect x="0" y="0" width="32" height="42" rx="3" fill="#0a1628"/>
+              <rect x="5" y="8"  width="22" height="2.5" rx="1" fill="#0a1628"/>
+              <rect x="5" y="14" width="18" height="2.5" rx="1" fill="#0a1628"/>
+              <rect x="5" y="20" width="20" height="2.5" rx="1" fill="#0a1628"/>
+              <rect x="5" y="26" width="14" height="2.5" rx="1" fill="#0a1628"/>
+            </g>
+            <g opacity="0.055" transform="translate(90,85)">
+              <path d="M28 0L0 14L28 28L56 14Z" fill="#0a1628"/>
+              <path d="M10 20V34C10 34 17 40 28 40C39 40 46 34 46 34V20L28 28Z" fill="#0a1628"/>
+              <rect x="53" y="13" width="4" height="14" rx="2" fill="#0a1628"/>
+              <circle cx="55" cy="29" r="3" fill="#0a1628"/>
+            </g>
+            <g opacity="0.04" transform="translate(95,5)">
+              <rect x="0" y="6" width="50" height="34" rx="3" fill="#0a1628"/>
+              <circle cx="0"  cy="23" r="6" fill="#0a1628"/>
+              <circle cx="50" cy="23" r="6" fill="#0a1628"/>
+              <rect x="10" y="14" width="30" height="3" rx="1" fill="white"/>
+              <rect x="10" y="22" width="24" height="3" rx="1" fill="white"/>
+            </g>
+            <g opacity="0.045" transform="translate(5,95)">
+              <rect x="0" y="0" width="10" height="36" rx="2" fill="#c9a84c"/>
+              <polygon points="5,36 0,48 10,48" fill="#c9a84c"/>
+            </g>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#ap)"/>
+      </svg>
+    </div>
+    <div class="hero-gold-stripe" aria-hidden="true"></div>
+
+    <div class="container hero-layout">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          University of Lagos &mdash; 2025/2026 Academic Session
+        </div>
+        <h1 class="hero-title">Upcoming<br/><em>Events</em></h1>
+        <p class="hero-desc">Discover, learn, and connect. Browse our curated selection of academic and professional events designed to shape the next generation of leaders.</p>
+        <div class="hero-actions">
+          <button class="btn-hero-primary" onclick="document.getElementById('schedule').scrollIntoView({behavior:'smooth'})">
+            View All Events <i class="fas fa-arrow-right"></i>
+          </button>
+          <button class="btn-hero-ghost" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+            Learn More
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item"><span class="stat-num">4+</span><span class="stat-lbl">Events</span></div>
+          <div class="stat-div"></div>
+          <div class="stat-item"><span class="stat-num">1,400+</span><span class="stat-lbl">Registered</span></div>
+          <div class="stat-div"></div>
+          <div class="stat-item"><span class="stat-num">4</span><span class="stat-lbl">Speakers</span></div>
+          <div class="stat-div"></div>
+          <div class="stat-item"><span class="stat-num">1</span><span class="stat-lbl">Venue</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 420 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="70" y="175" width="290" height="255" rx="4" fill="#0a1628"/>
+          <rect x="70" y="175" width="290" height="14" fill="#c9a84c"/>
+          <rect x="98"  y="189" width="16" height="241" rx="3" fill="#162238"/>
+          <rect x="136" y="189" width="16" height="241" rx="3" fill="#162238"/>
+          <rect x="198" y="189" width="16" height="241" rx="3" fill="#162238"/>
+          <rect x="260" y="189" width="16" height="241" rx="3" fill="#162238"/>
+          <rect x="316" y="189" width="16" height="241" rx="3" fill="#162238"/>
+          <rect x="104" y="205" width="22" height="28" rx="2" fill="#c9a84c" opacity="0.75"/>
+          <rect x="150" y="205" width="22" height="28" rx="2" fill="#c9a84c" opacity="0.5"/>
+          <rect x="198" y="205" width="22" height="28" rx="2" fill="#c9a84c" opacity="0.85"/>
+          <rect x="246" y="205" width="22" height="28" rx="2" fill="#c9a84c" opacity="0.6"/>
+          <rect x="292" y="205" width="22" height="28" rx="2" fill="#c9a84c" opacity="0.75"/>
+          <rect x="104" y="252" width="22" height="28" rx="2" fill="#c9a84c" opacity="0.6"/>
+          <rect x="150" y="252" width="22" height="28" rx="2" fill="#c9a84c" opacity="0.8"/>
+          <rect x="198" y="252" width="22" height="28" rx="2" fill="#c9a84c" opacity="0.55"/>
+          <rect x="246" y="252" width="22" height="28" rx="2" fill="#c9a84c" opacity="0.7"/>
+          <rect x="292" y="252" width="22" height="28" rx="2" fill="#c9a84c" opacity="0.65"/>
+          <rect x="168" y="358" width="80" height="72" rx="40 40 0 0" fill="#c9a84c"/>
+          <rect x="178" y="382" width="28" height="48" rx="3" fill="#0a1628"/>
+          <rect x="210" y="382" width="28" height="48" rx="3" fill="#0a1628"/>
+          <polygon points="70,175 215,82 360,175" fill="#f5f0e8"/>
+          <polygon points="90,175 215,98 342,175" fill="#0a1628" opacity="0.88"/>
+          <rect x="211" y="25" width="4" height="60" fill="#c9a84c"/>
+          <rect x="215" y="25" width="40" height="26" rx="2" fill="#008751"/>
+          <text x="235" y="43" font-family="serif" font-size="13" fill="white" text-anchor="middle">★</text>
+          <rect x="46"  y="420" width="340" height="12" rx="2" fill="#e8e0d0"/>
+          <rect x="26"  y="432" width="380" height="12" rx="2" fill="#d5c9b5"/>
+          <ellipse cx="38"  cy="386" rx="26" ry="44" fill="#2d6a4f" opacity="0.85"/>
+          <rect x="34"  y="422" width="8" height="22" fill="#6b4226"/>
+          <ellipse cx="392" cy="386" rx="26" ry="44" fill="#2d6a4f" opacity="0.85"/>
+          <rect x="388" y="422" width="8" height="22" fill="#6b4226"/>
+          <g transform="translate(275,50)">
+            <path d="M44 0L0 22L44 44L88 22Z" fill="#c9a84c" opacity="0.9"/>
+            <path d="M20 31V52C20 52 30 62 44 62C58 62 68 52 68 52V31L44 44Z" fill="#0a1628" opacity="0.85"/>
+            <rect x="84" y="21" width="5" height="22" rx="2.5" fill="#c9a84c"/>
+            <circle cx="86.5" cy="45" r="4" fill="#c9a84c"/>
+          </g>
+          <g transform="translate(28,285)">
+            <path d="M0 12C0 12 34-5 58 0V58C34 53 0 70 0 70Z" fill="#f5f0e8"/>
+            <path d="M116 12C116 12 82-5 58 0V58C82 53 116 70 116 70Z" fill="#e8e0d0"/>
+            <rect x="10" y="22" width="38" height="2.5" rx="1" fill="#0a1628" opacity="0.22"/>
+            <rect x="10" y="30" width="30" height="2.5" rx="1" fill="#0a1628" opacity="0.22"/>
+            <rect x="10" y="38" width="34" height="2.5" rx="1" fill="#0a1628" opacity="0.22"/>
+            <rect x="68" y="22" width="38" height="2.5" rx="1" fill="#0a1628" opacity="0.22"/>
+            <rect x="68" y="30" width="30" height="2.5" rx="1" fill="#0a1628" opacity="0.22"/>
+            <rect x="68" y="38" width="34" height="2.5" rx="1" fill="#0a1628" opacity="0.22"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true">
+      <span>Scroll to explore</span>
+      <div class="scroll-arrow"><i class="fas fa-chevron-down"></i></div>
+    </div>
+  </section>
+
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <div class="section-label">About</div>
+      <h2 class="section-title">The Importance of<br/><em>Attending Our Events</em></h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="about-lead">Attending our events gives you access to valuable insights, industry trends, and networking opportunities that can elevate your career or business.</p>
+          <p class="about-body">Don't miss the chance to learn, grow, and be part of a thriving community. Each event is carefully curated to deliver maximum value — whether you're an undergraduate exploring your path or a postgraduate refining your expertise.</p>
+          <div class="about-feats">
+            <div class="about-feat"><div class="feat-icon"><i class="fas fa-lightbulb"></i></div><div><strong>Valuable Insights</strong><p>Gain cutting-edge knowledge from industry leaders and academic experts.</p></div></div>
+            <div class="about-feat"><div class="feat-icon"><i class="fas fa-handshake"></i></div><div><strong>Networking</strong><p>Connect with peers, mentors, and professionals across disciplines.</p></div></div>
+            <div class="about-feat"><div class="feat-icon"><i class="fas fa-chart-line"></i></div><div><strong>Career Growth</strong><p>Discover opportunities that accelerate your professional journey.</p></div></div>
+            <div class="about-feat"><div class="feat-icon"><i class="fas fa-users"></i></div><div><strong>Community</strong><p>Be part of a vibrant, thriving academic and professional community.</p></div></div>
+          </div>
+        </div>
+        <div class="about-card-col">
+          <div class="about-card-stack">
+            <div class="acard acard-back"></div>
+            <div class="acard acard-mid"></div>
+            <div class="acard acard-front">
+              <div class="acard-icon"><i class="fas fa-graduation-cap"></i></div>
+              <h4>Why Participate?</h4>
+              <ul>
+                <li><i class="fas fa-check"></i> Access to industry leaders</li>
+                <li><i class="fas fa-check"></i> Hands-on workshops</li>
+                <li><i class="fas fa-check"></i> Certificate of participation</li>
+                <li><i class="fas fa-check"></i> Exclusive networking sessions</li>
+                <li><i class="fas fa-check"></i> Career mentorship opportunities</li>
+              </ul>
+              <div class="acard-badge">University of Lagos</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ SPEAKERS ═══ -->
+  <section id="speakers" class="section speakers-section">
+    <div class="container">
+      <div class="section-label">Speakers</div>
+      <h2 class="section-title">Meet Our<br/><em>Expert Speakers</em></h2>
+      <p class="section-sub">World-class professionals bringing real-world expertise to inspire and empower our students.</p>
+      <div class="speakers-grid">
+
+        <div class="speaker-card">
+          <div class="speaker-avatar av-green">
+            <svg viewBox="0 0 100 100"><circle cx="50" cy="42" r="22" fill="white" opacity="0.9"/><ellipse cx="50" cy="90" rx="34" ry="26" fill="white" opacity="0.8"/></svg>
+            <span class="sp-num">01</span>
+          </div>
+          <div class="speaker-body">
+            <h3>Boluwatife</h3>
+            <span class="sp-role">Technology Innovator</span>
+            <p>A pioneering voice in African tech entrepreneurship, bringing disruptive insights on digital transformation and the future of work across the continent.</p>
+            <div class="sp-socials"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a></div>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-avatar av-navy">
+            <svg viewBox="0 0 100 100"><circle cx="50" cy="42" r="22" fill="white" opacity="0.9"/><ellipse cx="50" cy="90" rx="34" ry="26" fill="white" opacity="0.8"/></svg>
+            <span class="sp-num">02</span>
+          </div>
+          <div class="speaker-body">
+            <h3>Thomas</h3>
+            <span class="sp-role">Research Scientist</span>
+            <p>An accomplished researcher whose work on data science and artificial intelligence is reshaping how universities approach knowledge creation and discovery.</p>
+            <div class="sp-socials"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a><a href="#" aria-label="Research"><i class="fas fa-flask"></i></a></div>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-avatar av-crimson">
+            <svg viewBox="0 0 100 100"><circle cx="50" cy="42" r="22" fill="white" opacity="0.9"/><ellipse cx="50" cy="90" rx="34" ry="26" fill="white" opacity="0.8"/></svg>
+            <span class="sp-num">03</span>
+          </div>
+          <div class="speaker-body">
+            <h3>Isabell</h3>
+            <span class="sp-role">Career Development Expert</span>
+            <p>An internationally acclaimed career strategist helping thousands of graduates navigate the modern job market with confidence, clarity, and purpose.</p>
+            <div class="sp-socials"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a><a href="#" aria-label="Website"><i class="fas fa-globe"></i></a></div>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-avatar av-gold">
+            <svg viewBox="0 0 100 100"><circle cx="50" cy="42" r="22" fill="white" opacity="0.9"/><ellipse cx="50" cy="90" rx="34" ry="26" fill="white" opacity="0.8"/></svg>
+            <span class="sp-num">04</span>
+          </div>
+          <div class="speaker-body">
+            <h3>Chioma</h3>
+            <span class="sp-role">Business Leadership Coach</span>
+            <p>A celebrated entrepreneur and leadership coach empowering the next generation of African business leaders to build high-impact ventures and communities.</p>
+            <div class="sp-socials"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ SCHEDULE ═══ -->
+  <section id="schedule" class="section schedule-section">
+    <div class="container">
+      <div class="section-label">Schedule</div>
+      <h2 class="section-title">Upcoming<br/><em>Events Schedule</em></h2>
+      <p class="section-sub">Click <strong>Register</strong> on any event to secure your spot instantly.</p>
+
+      <div class="schedule-list">
+
+        <div class="sch-item" data-accent="#1a3a6b">
+          <div class="sch-date-box"><span class="sch-d">14</span><span class="sch-m">Jun</span></div>
+          <div class="sch-bar" style="background:#1a3a6b;"></div>
+          <div class="sch-body">
+            <span class="sch-tag" style="color:#1a3a6b;background:#e8edf8;"><i class="fas fa-microchip"></i> Technology</span>
+            <h3>TechSummit 2025</h3>
+            <p>A full-day immersive summit featuring talks from industry leaders on AI, blockchain, cybersecurity, and emerging technologies reshaping Africa's digital economy.</p>
+            <div class="sch-meta">
+              <span><i class="far fa-clock"></i> 9:00 AM – 5:00 PM</span>
+              <span><i class="fas fa-location-dot"></i> Main Auditorium</span>
+              <span><i class="fas fa-users"></i> 312 registered</span>
+            </div>
+          </div>
+          <div class="sch-action">
+            <div class="sch-speaker-tag">Speaker: <strong>Thomas</strong></div>
+            <button class="btn-sch-register" style="background:#1a3a6b;" onclick="openModal('TechSummit 2025','Annual Technology Summit','Jun 14, 2025','312 registered')">Register <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <div class="sch-item" data-accent="#8b1a2e">
+          <div class="sch-date-box"><span class="sch-d">20</span><span class="sch-m">Jun</span></div>
+          <div class="sch-bar" style="background:#8b1a2e;"></div>
+          <div class="sch-body">
+            <span class="sch-tag" style="color:#8b1a2e;background:#fdf0f2;"><i class="fas fa-flask"></i> Academic Research</span>
+            <h3>Research Symposium</h3>
+            <p>A prestigious platform for postgraduate scholars to present ongoing research, receive feedback from faculty reviewers, and engage with industry practitioners.</p>
+            <div class="sch-meta">
+              <span><i class="far fa-clock"></i> 10:00 AM – 4:00 PM</span>
+              <span><i class="fas fa-location-dot"></i> Faculty of Science Hall</span>
+              <span><i class="fas fa-users"></i> 189 registered</span>
+            </div>
+          </div>
+          <div class="sch-action">
+            <div class="sch-speaker-tag">Speaker: <strong>Boluwatife</strong></div>
+            <button class="btn-sch-register" style="background:#8b1a2e;" onclick="openModal('Research Symposium','Postgraduate Research Showcase','Jun 20, 2025','189 registered')">Register <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <div class="sch-item" data-accent="#1a5c38">
+          <div class="sch-date-box"><span class="sch-d">05</span><span class="sch-m">Jul</span></div>
+          <div class="sch-bar" style="background:#1a5c38;"></div>
+          <div class="sch-body">
+            <span class="sch-tag" style="color:#1a5c38;background:#e8f5ee;"><i class="fas fa-briefcase"></i> Career</span>
+            <h3>Career Fair 2025</h3>
+            <p>Meet recruiters from 50+ top companies across engineering, finance, healthcare, and technology. Bring your CV, your portfolio, and your ambition.</p>
+            <div class="sch-meta">
+              <span><i class="far fa-clock"></i> 8:00 AM – 6:00 PM</span>
+              <span><i class="fas fa-location-dot"></i> Sports Complex</span>
+              <span><i class="fas fa-users"></i> 521 registered</span>
+            </div>
+          </div>
+          <div class="sch-action">
+            <div class="sch-speaker-tag">Speaker: <strong>Isabell</strong></div>
+            <button class="btn-sch-register" style="background:#1a5c38;" onclick="openModal('Career Fair 2025','Multi-Industry Career Expo','Jul 5, 2025','521 registered')">Register <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <div class="sch-item" data-accent="#8b6200">
+          <div class="sch-date-box"><span class="sch-d">12</span><span class="sch-m">Jul</span></div>
+          <div class="sch-bar" style="background:#8b6200;"></div>
+          <div class="sch-body">
+            <span class="sch-tag" style="color:#8b6200;background:#fdf8ec;"><i class="fas fa-star"></i> Cultural</span>
+            <h3>Cultural Fiesta</h3>
+            <p>A vibrant celebration of the rich diversity of our campus community — performances, food festivals, artistic exhibitions, and cross-cultural dialogue.</p>
+            <div class="sch-meta">
+              <span><i class="far fa-clock"></i> 12:00 PM – 8:00 PM</span>
+              <span><i class="fas fa-location-dot"></i> University Grounds</span>
+              <span><i class="fas fa-users"></i> 408 registered</span>
+            </div>
+          </div>
+          <div class="sch-action">
+            <div class="sch-speaker-tag">Speaker: <strong>Chioma</strong></div>
+            <button class="btn-sch-register" style="background:#8b6200;" onclick="openModal('Cultural Fiesta','Annual Cultural Celebration','Jul 12, 2025','408 registered')">Register <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ VENUE ═══ -->
+  <section id="venue" class="section venue-section">
+    <div class="container">
+      <div class="section-label">Venue</div>
+      <h2 class="section-title">Event<br/><em>Venue</em></h2>
+      <div class="venue-grid">
+        <div class="venue-info">
+          <div class="venue-name"><i class="fas fa-university"></i> University of Lagos</div>
+          <address class="venue-address">
+            <div class="addr-row"><i class="fas fa-location-dot"></i> Akoka, Lagos, Nigeria</div>
+            <div class="addr-row"><i class="fas fa-map"></i> Mainland Campus, University Road</div>
+            <div class="addr-row"><i class="fas fa-globe"></i> www.unilag.edu.ng</div>
+          </address>
+          <div class="venue-ways">
+            <div class="vway"><div class="vway-icon"><i class="fas fa-car"></i></div><div><strong>By Car</strong><p>Via Mainland Bridge. Ample parking on campus.</p></div></div>
+            <div class="vway"><div class="vway-icon"><i class="fas fa-bus"></i></div><div><strong>By Bus</strong><p>BRT stops at Unilag gate. Danfo routes from CMS.</p></div></div>
+            <div class="vway"><div class="vway-icon"><i class="fas fa-water"></i></div><div><strong>By Ferry</strong><p>Ferry from Five Cowrie Creek to Unilag Jetty.</p></div></div>
+          </div>
+          <a href="https://maps.google.com/?q=University+of+Lagos+Akoka" target="_blank" rel="noopener" class="btn-map">
+            <i class="fas fa-map-location-dot"></i> Open in Google Maps
+          </a>
+        </div>
+
+        <div class="venue-map-wrap">
+          <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg">
+            <rect width="480" height="360" fill="#f0f4f8"/>
+            <rect x="0" y="162" width="480" height="36" fill="#ccc9b8"/>
+            <rect x="218" y="0" width="44" height="360" fill="#ccc9b8"/>
+            <rect x="28"  y="177" width="44" height="6" rx="3" fill="white" opacity="0.7"/>
+            <rect x="110" y="177" width="44" height="6" rx="3" fill="white" opacity="0.7"/>
+            <rect x="268" y="177" width="44" height="6" rx="3" fill="white" opacity="0.7"/>
+            <rect x="360" y="177" width="44" height="6" rx="3" fill="white" opacity="0.7"/>
+            <ellipse cx="80" cy="318" rx="88" ry="46" fill="#a8d5e2" opacity="0.65"/>
+            <ellipse cx="405" cy="325" rx="95" ry="42" fill="#a8d5e2" opacity="0.55"/>
+            <rect x="242" y="28" width="194" height="118" rx="5" fill="#0a1628"/>
+            <rect x="242" y="28" width="194" height="12" fill="#c9a84c"/>
+            <rect x="258" y="40" width="20" height="106" rx="3" fill="#162238"/>
+            <rect x="294" y="40" width="20" height="106" rx="3" fill="#162238"/>
+            <rect x="350" y="40" width="20" height="106" rx="3" fill="#162238"/>
+            <rect x="396" y="40" width="20" height="106" rx="3" fill="#162238"/>
+            <rect x="264" y="56" width="18" height="22" rx="2" fill="#c9a84c" opacity="0.8"/>
+            <rect x="300" y="56" width="18" height="22" rx="2" fill="#c9a84c" opacity="0.6"/>
+            <rect x="336" y="56" width="18" height="22" rx="2" fill="#c9a84c" opacity="0.8"/>
+            <rect x="372" y="56" width="18" height="22" rx="2" fill="#c9a84c" opacity="0.6"/>
+            <rect x="318" y="108" width="44" height="38" rx="2" fill="#c9a84c" opacity="0.9"/>
+            <rect x="332" y="16" width="3" height="16" fill="#c9a84c"/>
+            <rect x="335" y="16" width="20" height="12" rx="2" fill="#008751"/>
+            <rect x="28" y="28" width="158" height="118" rx="5" fill="#1a5c38"/>
+            <rect x="28" y="28" width="158" height="12" fill="#c9a84c"/>
+            <text x="107" y="98" font-family="Georgia,serif" font-size="13" fill="white" text-anchor="middle" opacity="0.9">Library</text>
+            <rect x="50" y="106" width="114" height="40" rx="3" fill="#124a2c"/>
+            <rect x="28" y="200" width="168" height="120" rx="5" fill="#6b3a2a"/>
+            <text x="112" y="264" font-family="Georgia,serif" font-size="11" fill="white" text-anchor="middle">Main Auditorium</text>
+            <ellipse cx="112" cy="240" rx="56" ry="22" fill="#8b4a36" opacity="0.7"/>
+            <rect x="242" y="200" width="218" height="130" rx="5" fill="#1a5c38"/>
+            <ellipse cx="351" cy="265" rx="84" ry="52" fill="#258047" opacity="0.6"/>
+            <text x="351" y="270" font-family="Georgia,serif" font-size="11" fill="white" text-anchor="middle">Sports Complex</text>
+            <ellipse cx="210" cy="80"  rx="18" ry="26" fill="#2d6a4f" opacity="0.85"/>
+            <ellipse cx="210" cy="265" rx="18" ry="26" fill="#2d6a4f" opacity="0.85"/>
+            <ellipse cx="470" cy="80"  rx="18" ry="26" fill="#2d6a4f" opacity="0.75"/>
+            <ellipse cx="470" cy="265" rx="18" ry="26" fill="#2d6a4f" opacity="0.75"/>
+            <circle cx="340" cy="82" r="16" fill="#c9a84c"/>
+            <circle cx="340" cy="78" r="8"  fill="white"/>
+            <text x="340" y="80" font-family="sans-serif" font-size="9" fill="#0a1628" text-anchor="middle" dominant-baseline="middle">★</text>
+            <line x1="340" y1="94" x2="340" y2="108" stroke="#c9a84c" stroke-width="3"/>
+            <text x="107" y="14" font-family="sans-serif" font-size="9" fill="#666" text-anchor="middle">Faculty Road</text>
+            <text x="372" y="14" font-family="sans-serif" font-size="9" fill="#666" text-anchor="middle">Admin Block</text>
+          </svg>
+          <p class="map-caption">University of Lagos — Akoka Campus, Lagos</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ CONTACT ═══ -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Get In<br/><em>Touch</em></h2>
+      <p class="section-sub">Questions about registration or events? Our team is always ready to help.</p>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="cc-icon" style="background:#e8edf8;color:#1a3a6b;"><i class="fas fa-envelope-open-text"></i></div>
+          <h3>Email Us</h3>
+          <p>For general enquiries, registration issues, or event information.</p>
+          <a href="mailto:info@unilag.com" class="cc-link">info@unilag.com</a>
+        </div>
+        <div class="contact-card">
+          <div class="cc-icon" style="background:#e8f5ee;color:#1a5c38;"><i class="fas fa-phone-volume"></i></div>
+          <h3>Call Us</h3>
+          <p>Speak with our events team Monday – Friday, 8 AM – 5 PM.</p>
+          <a href="tel:+2347032529387" class="cc-link">+234 (0) 703 252 9387</a>
+        </div>
+        <div class="contact-card">
+          <div class="cc-icon" style="background:#fdf8ec;color:#8b6200;"><i class="fas fa-location-dot"></i></div>
+          <h3>Visit Us</h3>
+          <p>Find us at the Student Affairs office on the main campus.</p>
+          <span class="cc-link">Unilag, Akoka, Lagos</span>
+        </div>
+        <div class="contact-card contact-card-cta">
+          <div class="cc-icon" style="background:#0a1628;color:#c9a84c;"><i class="fas fa-calendar-check"></i></div>
+          <h3>Register for an Event</h3>
+          <p>Ready to join? Register for any of our upcoming events in minutes.</p>
+          <button class="btn-cc-register" onclick="openModal('General Registration','Student Event Registration','See schedule above','')">
+            Register Now <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+          <rect width="40" height="40" rx="10" fill="#0a1628"/>
+          <path d="M20 9L8 15.5L20 22L32 15.5L20 9Z" fill="#c9a84c"/>
+          <path d="M14 18.5V25C14 25 16 28 20 28C24 28 26 25 26 25V18.5L20 22L14 18.5Z" fill="white" opacity="0.9"/>
+          <rect x="30" y="15" width="2.5" height="9" rx="1.25" fill="#c9a84c"/>
+          <circle cx="31.25" cy="25" r="2" fill="#c9a84c"/>
+        </svg>
+        <span>EduEvents Portal</span>
+      </div>
+      <p class="footer-copy">&copy; 2025 EduEvents &mdash; University of Lagos. All rights reserved.</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#home">Home</a><a href="#about">About</a><a href="#speakers">Speakers</a>
+        <a href="#schedule">Schedule</a><a href="#venue">Venue</a><a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ═══ REGISTRATION MODAL ═══ -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="handleOverlayClick(event)">
+    <div class="modal" id="registrationModal">
+      <div class="modal-header">
+        <div class="modal-header-top">
+          <div>
+            <p class="event-sub">Registering for</p>
+            <h2 class="event-title" id="modalTitle">Event</h2>
+          </div>
+          <button class="modal-close" onclick="closeModal()" aria-label="Close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="step-indicator" id="stepIndicator">
+          <div class="step-item active" id="step-indicator-1"><div class="step-circle">1</div><span class="step-label">Personal Info</span></div>
+          <div class="step-item" id="step-indicator-2"><div class="step-circle">2</div><span class="step-label">Accommodation</span></div>
+        </div>
+        <div class="progress-wrap"><div class="progress-bar" id="progressBar" style="width:50%"></div></div>
+      </div>
+
+      <div class="modal-body">
+        <!-- STEP 1 -->
+        <div class="form-step active" id="formStep1">
+          <div class="form-group">
+            <label><i class="fas fa-graduation-cap"></i> Academic Level <span class="required">*</span></label>
+            <div class="level-selector">
+              <button class="level-btn ug" id="btnUG" onclick="selectLevel('UG')" aria-pressed="false" type="button">
+                <span class="level-icon">🎓</span><span class="level-title">Undergraduate</span>
+                <span class="level-desc">Bachelor's degree students</span>
+                <span class="level-check"><i class="fas fa-check"></i></span>
+              </button>
+              <button class="level-btn pg" id="btnPG" onclick="selectLevel('PG')" aria-pressed="false" type="button">
+                <span class="level-icon">🏛️</span><span class="level-title">Postgraduate</span>
+                <span class="level-desc">Masters &amp; PhD students</span>
+                <span class="level-check"><i class="fas fa-check"></i></span>
+              </button>
+            </div>
+            <div class="field-error" id="err-level">Please select your academic level.</div>
+          </div>
+          <div class="form-group">
+            <label for="matricNo"><i class="fas fa-id-card"></i> Matric Number <span class="required">*</span> <span class="label-hint" id="matric-format-hint">UG + Year + 4 digits</span></label>
+            <div class="input-icon-wrap">
+              <i class="fas fa-hashtag input-icon"></i>
+              <input type="text" id="matricNo" class="form-control" placeholder="e.g. UG20251234" maxlength="12" autocomplete="off" oninput="validateMatricRealtime()"/>
+              <span class="input-status" id="matric-status"></span>
+            </div>
+            <div class="field-error" id="err-matric"></div>
+            <p class="field-hint" id="hint-matric"><i class="fas fa-info-circle"></i> Must start with <strong>UG</strong> + current year + 4 unique digits</p>
+          </div>
+          <div class="form-group">
+            <label for="fullName"><i class="fas fa-user"></i> Full Name <span class="required">*</span></label>
+            <div class="input-icon-wrap">
+              <i class="fas fa-user input-icon"></i>
+              <input type="text" id="fullName" class="form-control" placeholder="Enter your full legal name" maxlength="80" autocomplete="name" oninput="charCount('fullName','name-count',80)"/>
+              <span class="input-status" id="name-status"></span>
+            </div>
+            <div class="field-error" id="err-name"></div>
+            <div class="char-counter"><span id="name-count">0</span>/80</div>
+          </div>
+          <div class="form-group">
+            <label for="dob"><i class="fas fa-calendar-alt"></i> Date of Birth <span class="required">*</span> <span class="label-hint" id="dob-hint">UG: under 25 · PG: 22+</span></label>
+            <input type="date" id="dob" class="form-control" onchange="validateDOBRealtime()"/>
+            <div class="field-error" id="err-dob"></div>
+            <div class="field-success" id="ok-dob"></div>
+          </div>
+          <div class="form-group">
+            <label for="email"><i class="fas fa-envelope"></i> Email Address <span class="required">*</span></label>
+            <div class="input-icon-wrap">
+              <i class="fas fa-envelope input-icon"></i>
+              <input type="email" id="email" class="form-control" placeholder="your.email@university.edu" autocomplete="email"/>
+              <span class="input-status" id="email-status"></span>
+            </div>
+            <div class="field-error" id="err-email"></div>
+          </div>
+          <div class="form-group">
+            <label for="department"><i class="fas fa-building-columns"></i> Department <span class="required">*</span></label>
+            <div id="dept-loader" class="skeleton-loader" style="display:none;"></div>
+            <select id="department" class="form-control"><option value="">— Select Academic Level First —</option></select>
+            <div class="field-error" id="err-dept"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone"><i class="fas fa-phone"></i> Phone <span class="required">*</span></label>
+              <div class="input-icon-wrap">
+                <i class="fas fa-phone input-icon"></i>
+                <input type="tel" id="phone" class="form-control" placeholder="+234 800 000 0000" autocomplete="tel"/>
+                <span class="input-status" id="phone-status"></span>
+              </div>
+              <div class="field-error" id="err-phone"></div>
+            </div>
+            <div class="form-group">
+              <label for="gender"><i class="fas fa-venus-mars"></i> Gender <span class="required">*</span></label>
+              <select id="gender" class="form-control">
+                <option value="">— Select —</option>
+                <option value="male">Male</option><option value="female">Female</option>
+                <option value="prefer-not">Prefer not to say</option>
+              </select>
+              <div class="field-error" id="err-gender"></div>
+            </div>
+          </div>
+          <div class="modal-nav">
+            <button class="btn btn-ghost" onclick="closeModal()"><i class="fas fa-times"></i> Cancel</button>
+            <button class="btn btn-primary" onclick="nextStep()">Continue <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="form-step" id="formStep2">
+          <div id="ug-section">
+            <div class="section-divider"><span><i class="fas fa-home"></i> Accommodation Details</span></div>
+            <div class="form-group">
+              <label for="hostelBlock"><i class="fas fa-hotel"></i> Preferred Hostel <span class="required">*</span></label>
+              <div id="hostel-loader" class="skeleton-loader" style="display:none;"></div>
+              <select id="hostelBlock" class="form-control"><option value="">— Select Hostel —</option></select>
+              <div class="field-error" id="err-hostel"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="roomType"><i class="fas fa-bed"></i> Room Preference</label>
+                <select id="roomType" class="form-control">
+                  <option value="">— Any —</option><option value="single">Single</option>
+                  <option value="double">Double</option><option value="quad">Quad</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="levelYear"><i class="fas fa-layer-group"></i> Current Level <span class="required">*</span></label>
+                <select id="levelYear" class="form-control">
+                  <option value="">— Select —</option><option value="100">100 Level</option>
+                  <option value="200">200 Level</option><option value="300">300 Level</option>
+                  <option value="400">400 Level</option><option value="500">500 Level</option>
+                </select>
+                <div class="field-error" id="err-level-year"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="ugNotes"><i class="fas fa-note-sticky"></i> Special Requests</label>
+              <textarea id="ugNotes" class="form-control" rows="3" placeholder="Any special accommodation needs..." maxlength="300" oninput="charCount('ugNotes','ug-notes-count',300)" style="resize:vertical;min-height:80px;"></textarea>
+              <div class="char-counter"><span id="ug-notes-count">0</span>/300</div>
+            </div>
+          </div>
+
+          <div id="pg-section" style="display:none;">
+            <div class="section-divider"><span><i class="fas fa-university"></i> Previous Institution Details</span></div>
+            <div class="form-group">
+              <label for="lastInstitution"><i class="fas fa-school"></i> Last Institution <span class="required">*</span></label>
+              <div class="input-icon-wrap">
+                <i class="fas fa-university input-icon"></i>
+                <input type="text" id="lastInstitution" class="form-control" placeholder="e.g. University of Lagos" maxlength="100"/>
+              </div>
+              <div class="field-error" id="err-institution"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="prevDegree"><i class="fas fa-scroll"></i> Previous Degree <span class="required">*</span></label>
+                <select id="prevDegree" class="form-control">
+                  <option value="">— Select —</option><option>B.Sc</option><option>B.Eng</option>
+                  <option>B.A</option><option>B.Tech</option><option>M.Sc</option>
+                  <option>MBBS</option><option>LLB</option><option value="other">Other</option>
+                </select>
+                <div class="field-error" id="err-prev-degree"></div>
+              </div>
+              <div class="form-group">
+                <label for="gradYear"><i class="fas fa-calendar-check"></i> Grad Year <span class="required">*</span></label>
+                <input type="number" id="gradYear" class="form-control" placeholder="e.g. 2022" min="1980" max="2025"/>
+                <div class="field-error" id="err-grad-year"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="pgProgram"><i class="fas fa-book-open"></i> Current Programme <span class="required">*</span></label>
+              <select id="pgProgram" class="form-control">
+                <option value="">— Select —</option><option value="msc">M.Sc</option>
+                <option value="meng">M.Eng</option><option value="mba">MBA</option>
+                <option value="llm">LLM</option><option value="mph">MPH</option>
+                <option value="med">M.Ed</option><option value="phd">Ph.D</option>
+              </select>
+              <div class="field-error" id="err-pg-program"></div>
+            </div>
+            <div class="form-group">
+              <label for="researchArea"><i class="fas fa-microscope"></i> Research Area</label>
+              <textarea id="researchArea" class="form-control" rows="3" placeholder="Briefly describe your research area..." maxlength="300" oninput="charCount('researchArea','research-count',300)" style="resize:vertical;min-height:80px;"></textarea>
+              <div class="char-counter"><span id="research-count">0</span>/300</div>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top:20px;">
+            <label style="flex-direction:row;align-items:flex-start;gap:10px;cursor:pointer;font-weight:400;">
+              <input type="checkbox" id="termsCheck" style="width:16px;height:16px;margin-top:2px;accent-color:#0a1628;flex-shrink:0;"/>
+              <span style="color:#555;font-size:0.83rem;line-height:1.6;">I confirm all information is accurate and agree to the <a href="#" style="color:#0a1628;font-weight:600;">Terms &amp; Conditions</a> and <a href="#" style="color:#0a1628;font-weight:600;">Privacy Policy</a>.</span>
+            </label>
+            <div class="field-error" id="err-terms"></div>
+          </div>
+          <div class="modal-nav">
+            <button class="btn btn-ghost" onclick="prevStep()"><i class="fas fa-arrow-left"></i> Back</button>
+            <button class="btn btn-primary" onclick="submitForm()" id="submitBtn"><i class="fas fa-paper-plane"></i> Submit Registration</button>
+          </div>
+        </div>
+
+        <!-- SUCCESS -->
+        <div class="success-screen" id="successScreen">
+          <div class="success-confetti">🎉</div>
+          <h2>Registration Successful!</h2>
+          <p>Your registration has been confirmed. Check your email for the confirmation details.</p>
+          <div class="reg-id-badge" id="regIdBadge">REG-XXXXXXXX</div>
+          <div class="success-details" id="successDetails"></div>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="closeModal()"><i class="fas fa-home"></i> Back to Events</button>
+            <button class="btn btn-ghost" onclick="resetAndClose()"><i class="fas fa-plus"></i> Register Another</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

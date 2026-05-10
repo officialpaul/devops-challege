@@ -1,0 +1,80 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_REGION        = "us-east-1"
+        ECR_REPO          = "demo-ecr"
+        IMAGE_TAG         = "latest"
+        ACCOUNT_ID        = "237024525624"
+        ECR_URI           = "${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
+        IMAGE_URI         = "${ECR_URI}/${ECR_REPO}:${IMAGE_TAG}"
+    }
+
+    stages {
+
+        stage('Build') {
+            steps {
+                echo "Building Docker image..."
+
+                sh """
+                docker build -t $ECR_REPO:$IMAGE_TAG .
+                docker tag $ECR_REPO:$IMAGE_TAG $IMAGE_URI
+                """
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo "Testing Docker image..."
+
+                sh """
+                docker run -d --name test-container -p 8080:80 $IMAGE_URI
+
+                sleep 5
+
+                curl -f http://localhost:8080 || exit 1
+
+                docker stop test-container
+                docker rm test-container
+                """
+            }
+        }
+
+        stage('Deploy to ECR') {
+            steps {
+                echo "Logging into ECR and pushing image..."
+
+                sh """
+                aws ecr get-login-password --region $AWS_REGION | \
+                docker login --username AWS --password-stdin $ECR_URI
+
+                docker push $IMAGE_URI
+                """
+            }
+        }
+
+        stage('Deploy to ECS') {
+            steps {
+                echo "Updating ECS service..."
+
+                sh """
+                aws ecs update-service \
+                --cluster demo-ecs-cluster \
+                --service demo-service-name \
+                --force-new-deployment \
+                --region $AWS_REGION
+                """
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Pipeline completed successfully!"
+        }
+
+        failure {
+            echo "Pipeline failed. Check logs."
+        }
+    }
+}

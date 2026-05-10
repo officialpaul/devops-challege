@@ -1,0 +1,55 @@
+{
+  "undergraduate": [
+    { "id": "ug-cs", "name": "Computer Science", "faculty": "Science & Technology" },
+    { "id": "ug-ee", "name": "Electrical Engineering", "faculty": "Engineering" },
+    { "id": "ug-me", "name": "Mechanical Engineering", "faculty": "Engineering" },
+    { "id": "ug-ce", "name": "Civil Engineering", "faculty": "Engineering" },
+    { "id": "ug-ch", "name": "Chemical Engineering", "faculty": "Engineering" },
+    { "id": "ug-math", "name": "Mathematics", "faculty": "Science & Technology" },
+    { "id": "ug-phy", "name": "Physics", "faculty": "Science & Technology" },
+    { "id": "ug-bio", "name": "Biology", "faculty": "Life Sciences" },
+    { "id": "ug-chem", "name": "Chemistry", "faculty": "Science & Technology" },
+    { "id": "ug-econ", "name": "Economics", "faculty": "Social Sciences" },
+    { "id": "ug-acc", "name": "Accounting", "faculty": "Business & Management" },
+    { "id": "ug-biz", "name": "Business Administration", "faculty": "Business & Management" },
+    { "id": "ug-law", "name": "Law", "faculty": "Law" },
+    { "id": "ug-med", "name": "Medicine & Surgery", "faculty": "Health Sciences" },
+    { "id": "ug-nur", "name": "Nursing", "faculty": "Health Sciences" },
+    { "id": "ug-arch", "name": "Architecture", "faculty": "Environmental Design" },
+    { "id": "ug-eng", "name": "English Language", "faculty": "Humanities" },
+    { "id": "ug-his", "name": "History & International Studies", "faculty": "Humanities" },
+    { "id": "ug-pols", "name": "Political Science", "faculty": "Social Sciences" },
+    { "id": "ug-soc", "name": "Sociology", "faculty": "Social Sciences" }
+  ],
+  "postgraduate": [
+    { "id": "pg-cs", "name": "Computer Science (M.Sc)", "faculty": "Science & Technology", "programs": ["M.Sc", "Ph.D"] },
+    { "id": "pg-ai", "name": "Artificial Intelligence (M.Sc)", "faculty": "Science & Technology", "programs": ["M.Sc", "Ph.D"] },
+    { "id": "pg-ds", "name": "Data Science & Analytics", "faculty": "Science & Technology", "programs": ["M.Sc"] },
+    { "id": "pg-ee", "name": "Electrical Engineering (M.Eng)", "faculty": "Engineering", "programs": ["M.Eng", "Ph.D"] },
+    { "id": "pg-me", "name": "Mechanical Engineering (M.Eng)", "faculty": "Engineering", "programs": ["M.Eng", "Ph.D"] },
+    { "id": "pg-mba", "name": "Business Administration (MBA)", "faculty": "Business & Management", "programs": ["MBA"] },
+    { "id": "pg-fin", "name": "Finance & Investment Banking", "faculty": "Business & Management", "programs": ["M.Sc", "Ph.D"] },
+    { "id": "pg-law", "name": "International Law (LLM)", "faculty": "Law", "programs": ["LLM", "Ph.D"] },
+    { "id": "pg-pub", "name": "Public Health (MPH)", "faculty": "Health Sciences", "programs": ["MPH", "Ph.D"] },
+    { "id": "pg-edu", "name": "Education Administration", "faculty": "Education", "programs": ["M.Ed", "Ph.D"] },
+    { "id": "pg-econ", "name": "Economics", "faculty": "Social Sciences", "programs": ["M.Sc", "Ph.D"] },
+    { "id": "pg-env", "name": "Environmental Science", "faculty": "Environmental Sciences", "programs": ["M.Sc", "Ph.D"] },
+    { "id": "pg-cy", "name": "Cybersecurity", "faculty": "Science & Technology", "programs": ["M.Sc"] },
+    { "id": "pg-arch", "name": "Architecture (M.Arch)", "faculty": "Environmental Design", "programs": ["M.Arch"] },
+    { "id": "pg-comm", "name": "Mass Communication", "faculty": "Humanities", "programs": ["M.Sc", "Ph.D"] }
+  ],
+  "hostels": {
+    "male": [
+      { "id": "h-m1", "name": "Sango Hall", "capacity": 200, "type": "Standard" },
+      { "id": "h-m2", "name": "Awolowo Hall", "capacity": 150, "type": "Premium" },
+      { "id": "h-m3", "name": "Independence Hall", "capacity": 300, "type": "Standard" },
+      { "id": "h-m4", "name": "Sultan Bello Hall", "capacity": 250, "type": "Standard" }
+    ],
+    "female": [
+      { "id": "h-f1", "name": "Queen Amina Hall", "capacity": 200, "type": "Standard" },
+      { "id": "h-f2", "name": "Moremi Hall", "capacity": 180, "type": "Premium" },
+      { "id": "h-f3", "name": "Nana Asma'u Hall", "capacity": 220, "type": "Standard" },
+      { "id": "h-f4", "name": "Taiwo Hall", "capacity": 160, "type": "Premium" }
+    ]
+  }
+}
